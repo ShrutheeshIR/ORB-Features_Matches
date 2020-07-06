@@ -7,15 +7,13 @@ Python bindings(and C++ code) for C++ implementation of ORB-Feature Extractor an
 ```
 cd orb_extractor
 ```
-Set corresponding numpy path for numpy in CMakeLists.txt line 13
+Set corresponding numpy path for numpy in ```CMakeLists.txt line 13```
 ```
 mkdir build
 python3 gen2.py pyorb build headers.txt
 cmake .
 ```
-Go to build/pyorb_generated_include.h
-
-Change ```#include "src/ORB.hpp" ``` to ```#include "../src/ORB.hpp" ```
+Go to ```build/pyorb_generated_include.h```. Change ```#include "src/ORB.hpp" ``` to ```#include "../src/ORB.hpp" ```
 
 ```make .```
 
@@ -59,4 +57,4 @@ The code to create python bindings is from learnopencv.com
 2. For some reason, the orb_matcher object has to be created everytime we wish to find matches. It gives wrong results otherwise. Need to investigate.
 3. Will try to combine the two into a single module, which will be certainly easier to handle.
 
-### This is my first attempt attempt at combining C++ and Python implementations. Any suggestions are welcome :)
+#### This is my first attempt attempt at combining C++ and Python implementations. Any suggestions are welcome :)
