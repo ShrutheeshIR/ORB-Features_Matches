@@ -10,3 +10,8 @@ orb_matcher/__pycache__
 orb_matcher/CMakeCache.txt
 orb_matcher/cmake_install.cmake
 orb_matcher/Makefile
+cmake_install.cmake
+CMakeCache.txt
+Example
+Makefile
+CMakeFiles
