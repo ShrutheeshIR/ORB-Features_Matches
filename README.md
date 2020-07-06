@@ -57,4 +57,4 @@ The code to create python bindings is from learnopencv.com
 2. For some reason, the orb_matcher object has to be created everytime we wish to find matches. It gives wrong results otherwise. Need to investigate.
 3. Will try to combine the two into a single module, which will be certainly easier to handle.
 
-#### This is my first attempt attempt at combining C++ and Python implementations. Any suggestions are welcome :)
+##### This is my first attempt attempt at combining C++ and Python implementations. Any suggestions are welcome.
