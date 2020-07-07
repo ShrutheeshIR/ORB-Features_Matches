@@ -57,5 +57,6 @@ The code to create python bindings is from <a href = "https://www.learnopencv.co
 1. This is a novice implementation, and can certainly be improved massively.
 2. For some reason, the orb_matcher object has to be created everytime we wish to find matches. It gives wrong results otherwise. Need to investigate.
 3. Will try to combine the two into a single module, which will be certainly easier to handle.
+4. I'm not sure how to return ```cv::keypoints``` directly to Python, hence currently they're being converted to ```cv::Mat``` and returned as ```np array```. 
 
 ##### This is my first attempt attempt at combining C++ and Python implementations. Any suggestions are welcome.
