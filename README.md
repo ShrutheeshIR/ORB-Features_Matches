@@ -49,6 +49,7 @@ make
 ## Acknowledgements.
 
 The C++ code has mostly been borrowed from ORB-SLAM2, in specific the <a href="https://github.com/raulmur/ORB_SLAM2/blob/master/src/ORBextractor.cc"> ORBextractor.cc </a> and <a href="https://github.com/raulmur/ORB_SLAM2/blob/master/src/ORBmatcher.cc.cc"> ORBmatcher.cc </a> with a few tiny changes (removed the concept of frames).
+
 The code to create python bindings is from <a href = "https://www.learnopencv.com/how-to-convert-your-opencv-c-code-into-a-python-module/"> learnopencv.com</a>. The ```g++``` compilation code has been written equivalently in cmake. (to the best of my knowledge).
 
 ## Notes
