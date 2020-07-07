@@ -49,7 +49,7 @@ make
 ## Acknowledgements.
 
 The C++ code has mostly been borrowed from ORB-SLAM2, with a few tiny changes (removed the concept of frames).
-The code to create python bindings is from <a href = "https://www.learnopencv.com/how-to-convert-your-opencv-c-code-into-a-python-module/"learnopencv.com</a>
+The code to create python bindings is from <a href = "https://www.learnopencv.com/how-to-convert-your-opencv-c-code-into-a-python-module/"> learnopencv.com</a>
 
 ## Notes
 
