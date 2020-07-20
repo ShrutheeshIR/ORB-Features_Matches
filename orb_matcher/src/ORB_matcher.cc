@@ -12,8 +12,11 @@ const int ORBmatcher::TH_HIGH = 100;
 const int ORBmatcher::TH_LOW = 50;
 const int ORBmatcher::HISTO_LENGTH = 30;
 
-ORBmatcher::ORBmatcher(float nnratio, bool checkOri): mfNNratio(nnratio), mbCheckOrientation(checkOri)
+ORBmatcher::ORBmatcher(int wid, int hei, float nnratio, bool checkOri): mfNNratio(nnratio), mbCheckOrientation(checkOri)
 {
+    ORBmatcher::mnMaxX = wid;
+    ORBmatcher::mnMaxY = hei;
+
 }
 bool ORBmatcher::PosInGrid(const cv::KeyPoint &kp, int &posX, int &posY)
 {
@@ -100,7 +103,7 @@ vector<size_t> ORBmatcher::GetFeaturesInArea(const float &x, const float  &y, co
     return vIndices;
 }
 
-int ORBmatcher::find_matches(cv::InputArray _k1, cv::InputArray _k2, cv::Mat mDescriptors1, cv::Mat mDescriptors2, int windowSize , OutputArray img2_coordinates)
+int ORBmatcher::find_matches(cv::InputArray _k1, cv::InputArray _k2, cv::Mat mDescriptors1, cv::Mat mDescriptors2, int windowSize , int type, OutputArray img2_coordinates)
 {
     cv::Mat kpx1 = _k1.getMat();
     cv::Mat kpx2 = _k2.getMat();
@@ -158,8 +161,13 @@ int ORBmatcher::find_matches(cv::InputArray _k1, cv::InputArray _k2, cv::Mat mDe
             size_t i2 = *vit;
 
             cv::Mat d2 = mDescriptors2.row(i2);
+            float dist;
 
-            int dist = DescriptorDistance(d1,d2);
+            if(type==1)
+                dist = DescriptorDistance(d1,d2);
+            else if(type==2)
+                dist = DescriptorDistanceSIFT(d1,d2);
+
             
             if(vMatchedDistance[i2]<=dist)
                 continue;
@@ -175,7 +183,7 @@ int ORBmatcher::find_matches(cv::InputArray _k1, cv::InputArray _k2, cv::Mat mDe
                 bestDist2=dist;
             }
         }
-        if(bestDist<=TH_LOW)
+        if(bestDist<=INT_MAX)
         {
             if(bestDist<(float)bestDist2*mfNNratio)
             {
@@ -300,4 +308,13 @@ int ORBmatcher::DescriptorDistance(const cv::Mat &a, const cv::Mat &b)
 
     return dist;
 }
+
+float ORBmatcher::DescriptorDistanceSIFT(const cv::Mat &a, const cv::Mat &b)
+{
+    double dist_l2  = norm(a,b,NORM_L2);
+    // double dist_l2  = norm(a,b,NORM_HAMMING);
+    return dist_l2;
+
+}
+
 }
