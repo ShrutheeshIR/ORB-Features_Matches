@@ -1,5 +1,5 @@
 # ORB-Features_Matches
-Python bindings(and C++ code) for C++ implementation of ORB-Feature Extractor and ORB-Matcher, as implemented in ORB-SLAM2
+Python bindings(and C++ code) for C++ implementation of ORB-Feature Extractor and ORB-Matcher, as implemented in <a href="https://github.com/raulmur/ORB_SLAM2"> ORB-SLAM2 </a>
 
 ## Steps for Python:
 
@@ -48,13 +48,15 @@ make
 
 ## Acknowledgements.
 
-The C++ code has mostly been borrowed from ORB-SLAM2, with a few tiny changes (removed the concept of frames).
-The code to create python bindings is from learnopencv.com
+The C++ code has mostly been borrowed from ORB-SLAM2, in specific the <a href="https://github.com/raulmur/ORB_SLAM2/blob/master/src/ORBextractor.cc"> ORBextractor.cc </a> and <a href="https://github.com/raulmur/ORB_SLAM2/blob/master/src/ORBmatcher.cc.cc"> ORBmatcher.cc </a> with a few tiny changes (removed the concept of frames).
+
+The code to create python bindings is from <a href = "https://www.learnopencv.com/how-to-convert-your-opencv-c-code-into-a-python-module/"> learnopencv.com</a>. The ```g++``` compilation code has been written equivalently in cmake. (to the best of my knowledge).
 
 ## Notes
 
 1. This is a novice implementation, and can certainly be improved massively.
 2. For some reason, the orb_matcher object has to be created everytime we wish to find matches. It gives wrong results otherwise. Need to investigate.
 3. Will try to combine the two into a single module, which will be certainly easier to handle.
+4. I'm not sure how to return ```cv::keypoints``` directly to Python, hence currently they're being converted to ```cv::Mat``` and returned as ```np array```. 
 
 ##### This is my first attempt attempt at combining C++ and Python implementations. Any suggestions are welcome.
